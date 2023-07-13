@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 """
 calculates the fewest number of operations
+>= float('inf') or type(n) is not int
 """
 import math
 
 
 def minOperations(n):
-    """ calculates the fewest number of operations"""
+    """ calculates the fewest number of operations """
     ncopy_oper_s = 0
     npaste_oper_s = 0
 
-    if n <= 1 >= float('inf') or type(n) is not int:
+    if n <= 1:
         return 0
 
     while n > 1:
@@ -28,4 +29,3 @@ def minOperations(n):
 
     sum = ncopy_oper_s + npaste_oper_s
     return sum
-
