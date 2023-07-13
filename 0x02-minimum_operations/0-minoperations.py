@@ -2,29 +2,25 @@
 """
 calculates the fewest number of operations
 """
-import math
+
+
+def num_oper_s(num):
+    """ calc fewest number of operations"""
+    i = 1
+    list_oper_s = []
+    value = num
+    while value != 1:
+        i += 1
+        if value % i == 0:
+            while (value % i == 0 and value != 1):
+                value /= i
+                list_oper_s.append(i)
+
+    return list_oper_s
 
 
 def minOperations(n):
-    """ calculates the fewest number of operations """
-    ncopy_oper_s = 0
-    npaste_oper_s = 0
-
-    if n <= 1 or type(n) is not int:
+    """returns sum of  max num of operations"""
+    if n < 2 or type(n) is not int:
         return 0
-
-    while (n > 1):
-        maxm_num_oper_s = 0
-        module_list = []
-        for i in range(1, n):
-            if n % i == 0:
-                module_list.append(i)
-
-        maxm_num_oper_s = max(module_list)
-        ncopy_oper_s += 1
-        npaste_oper_s += ((n // maxm_num_oper_s)-1)
-
-        n = maxm_num_oper_s
-
-    sum = ncopy_oper_s + npaste_oper_s
-    return sum
+    return sum(num_oper_s(n))
