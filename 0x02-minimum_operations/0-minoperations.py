@@ -11,7 +11,7 @@ def minOperations(n):
     ncopy_oper_s = 0
     npaste_oper_s = 0
 
-    if n <= 1:
+    if n <= 1 or type(n) is not int:
         return 0
 
     while n > 1:
