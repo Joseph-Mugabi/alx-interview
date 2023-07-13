@@ -6,9 +6,7 @@ import math
 
 
 def minOperations(n):
-    """ calculates the fewest number of operations
-    needed to result in exactly n H characters in the file
-    returns an int"""
+    """ calculates the fewest number of operations"""
     ncopy_oper_s = 0
     npaste_oper_s = 0
 
