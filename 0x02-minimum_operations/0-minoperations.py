@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 calculates the fewest number of operations
->= float('inf') or type(n) is not int
 """
 import math
 
@@ -14,7 +13,7 @@ def minOperations(n):
     if n <= 1 or type(n) is not int:
         return 0
 
-    while n > 1:
+    while (n > 1):
         maxm_num_oper_s = 0
         module_list = []
         for i in range(1, n):
@@ -23,7 +22,7 @@ def minOperations(n):
 
         maxm_num_oper_s = max(module_list)
         ncopy_oper_s += 1
-        npaste_oper_s += ((n // maxm_num_oper_s) - 1)
+        npaste_oper_s += ((n // maxm_num_oper_s)-1)
 
         n = maxm_num_oper_s
 
