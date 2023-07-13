@@ -28,3 +28,4 @@ def minOperations(n):
 
     sum = ncopy_oper_s + npaste_oper_s
     return sum
+
