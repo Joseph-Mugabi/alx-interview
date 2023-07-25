@@ -1,25 +1,27 @@
-#!/usr/bin/env pytthon3
+#!/usr/bin/pytthon3
 """
 Determines if a given data set represents a valid UTF-8 encoding
 """
 
 
 def validUTF8(data):
-    state_of_bytes = 0
-    for num in data:
-        bit = 0b10000000
-        if not state_of_bytes:
-            while (bit & num):
-                state_of_bytes += 1
-                bit >>= 1
-            if state_of_bytes > 4:
+    bytes_to_follow = 0
+
+    for byte in data:
+        if bytes_to_follow > 0:
+            if (byte >> 6) != 0b10:
                 return False
-            elif state_of_bytes:
-                state_of_bytes -= 1
-                if state_of_bytes == 0:
-                    return False
-        elif state_of_bytes > 0:
-            if num >> 6 != 2:
+            bytes_to_follow -= 1
+        else:
+            if (byte >> 7) == 0b0:
+                bytes_to_follow = 0
+            elif (byte >> 5) == 0b110:
+                bytes_to_follow = 1
+            elif (byte >> 5) == 0b1110:
+                bytes_to_follow = 2
+            elif (byte >> 3) == 0b11110:
+                bytes_to_follow = 3
+            else:
                 return False
-            state_of_bytes -= 1
-    return not state_of_bytes
+
+    return bytes_to_follow == 0
